@@ -386,10 +386,19 @@ def test_holiday_closes_a_date(client, tomorrow):
     assert client.get(f"/api/slots?date={tomorrow}").json() != []
 
 
-def test_public_schedule_shape(client):
+def test_public_schedule_shape(client, tomorrow):
+    admin = auth_header(DEMO_USER)
+    client.post("/api/admin/holidays", json={"date": tomorrow, "note": "Team day"}, headers=admin)
+
     data = client.get("/api/schedule").json()
     assert len(data["weekdays"]) == 7
-    assert isinstance(data["holidays"], list)
+    # Holidays are objects — the frontend reads .date/.note on each entry.
+    holiday = next(h for h in data["holidays"] if h["date"] == tomorrow)
+    assert holiday["note"] == "Team day"
+
+    client.delete(f"/api/admin/holidays/{tomorrow}", headers=admin)
+    data = client.get("/api/schedule").json()
+    assert all(h["date"] != tomorrow for h in data["holidays"])
 
 
 # -------------------------------- reviews ---------------------------------

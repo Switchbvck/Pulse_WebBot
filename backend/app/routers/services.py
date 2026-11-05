@@ -47,7 +47,9 @@ def public_schedule(db: Session = Depends(get_db)) -> dict:
         }
         for _, rule in sorted(get_rules(db).items())
     ]
-    holidays = [holiday for holiday in get_holidays(db)]
+    holidays = [
+        {"date": day, "note": note} for day, note in sorted(get_holidays(db).items())
+    ]
     return {"weekdays": weekdays, "holidays": holidays}
 
 
