@@ -136,8 +136,9 @@ cd ..
 py -3 main.py
 ```
 
-`start-pulse.ps1` automates option C plus an ngrok tunnel for real Telegram
-testing (`stop-pulse.ps1` stops everything).
+For real Telegram testing the Mini App must be reachable over public HTTPS —
+expose it with `ngrok http 8000` and set `MINI_APP_URL` in `.env` to the
+tunnel URL.
 
 ## Testing
 
