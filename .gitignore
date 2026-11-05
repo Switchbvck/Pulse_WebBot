@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+.venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+
+# Node
+node_modules/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+
+# App artifacts (generated: DB, built Mini App bundle)
+backend/pulse.db
+pulse-app/dist/
+
+# Stats
+stats.json

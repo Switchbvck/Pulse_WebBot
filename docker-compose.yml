@@ -1,0 +1,20 @@
+# Demo stack: API + Mini App on one origin (http://localhost:8000).
+# The Telegram shell bot is not containerized: it needs a public HTTPS URL
+# (ngrok tunnel) for the Mini App launch button — run it on the host per README.
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Demo mode: unauthenticated users can browse and book (no admin).
+      # For a real deployment set PULSE_BOT_TOKEN, PULSE_ADMIN_IDS,
+      # PULSE_ALLOW_ANONYMOUS=false and drop the DEV_ADMIN flag.
+      PULSE_ALLOW_ANONYMOUS: "true"
+      PULSE_DB_URL: "sqlite:////data/pulse.db"
+    volumes:
+      - pulse-data:/data
+
+volumes:
+  pulse-data:

@@ -1,0 +1,8 @@
+# Normalize line endings: LF in the repo, OS-native in the working copy.
+* text=auto
+# Scripts and configs stay LF everywhere.
+*.sh text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.yml text eol=lf

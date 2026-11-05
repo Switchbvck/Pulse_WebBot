@@ -1,0 +1,16 @@
+# Keep the build context small and secrets out of the image.
+**/.env
+**/.venv
+**/venv
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+**/node_modules
+**/dist
+**/*.log
+**/*.db
+.git
+.github
+pulse-app/e2e
+pulse-app/playwright.config.js
+START_HERE.md
