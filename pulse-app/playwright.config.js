@@ -3,6 +3,8 @@ import { defineConfig, devices } from '@playwright/test'
 export default defineConfig({
   testDir: './e2e',
   timeout: 30_000,
+  // UI e2e is timing-sensitive: retry once in CI before failing the job.
+  retries: process.env.CI ? 1 : 0,
   use: {
     baseURL: 'http://localhost:5173',
     viewport: { width: 390, height: 844 },

@@ -10,8 +10,10 @@ test('booking wizard completes a full flow on demo data', async ({ page }) => {
     .getByRole('button', { name: 'Book' })
     .click()
 
-  // Step 2: choose the first available slot of the default day
+  // Step 2: pick tomorrow (today may be fully past its slots on an evening
+  // CI run), then choose the first available slot
   await expect(page.getByText('Step 2 of 3')).toBeVisible()
+  await page.locator('.no-scrollbar button').nth(1).click()
   const slot = page.locator('main button').filter({ hasText: /^\d{2}:\d{2}$/ }).first()
   await expect(slot).toBeVisible({ timeout: 10_000 })
   await slot.click()
