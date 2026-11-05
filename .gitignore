@@ -43,3 +43,7 @@ pulse-app/dist/
 
 # Stats
 stats.json
+
+# Local launcher scripts (personal-machine paths, not part of the project)
+start-pulse.ps1
+stop-pulse.ps1
