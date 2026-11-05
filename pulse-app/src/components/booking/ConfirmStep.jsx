@@ -149,7 +149,9 @@ export default function ConfirmStep({
           </span>
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold text-mist">{fullName}</p>
-            <p className="text-xs text-mist-dim">Telegram ID: {resolvedIdentity?.id ?? user?.id}</p>
+            <p className="text-xs text-mist-dim">
+              Telegram ID: •••{String(resolvedIdentity?.id ?? user?.id ?? '').slice(-3)}
+            </p>
           </div>
           <span className="flex items-center gap-1 rounded-full bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-accent">
             <BadgeCheck className="h-3 w-3" />
