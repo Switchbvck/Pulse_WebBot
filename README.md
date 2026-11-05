@@ -21,7 +21,11 @@ watches revenue/analytics.
 
 ## Demo
 
-Recorded live in Telegram via the shell bot [@pulseSwitchback_bot](https://t.me/pulseSwitchback_bot).
+Recorded live in Telegram. Try it yourself in one command:
+
+```bash
+docker compose up --build   # → http://localhost:8000 (browser demo mode)
+```
 
 | Booking flow (patient) | Admin panel (clinic) |
 |---|---|
