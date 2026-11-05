@@ -64,26 +64,28 @@ Recorded live in Telegram via the shell bot [@pulseSwitchback_bot](https://t.me/
 
 ## Architecture
 
-```
-┌────────────┐  /start, OTT links,       ┌──────────────────────────┐
-│  Telegram   │  reminder callbacks      │  Shell bot (PTB)          │
-│  clients    │─────────────────────────▶│  main.py (root)           │
-└─────┬───────┘                          └────────────┬─────────────┘
-      │ open Mini App (initData / ?ott=…)             │ X-Internal-Token
-      ▼                                               ▼
-┌───────────────────────────────────────────────────────────────┐
-│  FastAPI backend (backend/)                                   │
-│  /api/services  /api/bookings  /api/waitlist  /api/assistant  │
-│  /api/admin/* (require_admin)   /api/internal/* (shared secret)│
-│  ├─ HMAC initData validation + session/OTT auth               │
-│  ├─ SQLAlchemy + SQLite      ├─ APScheduler (reminders, grid) │
-│  └─ serves the built Mini App └─ Telegram Bot API notifications│
-└───────────────────────────────┬───────────────────────────────┘
-                                │ /api (same origin)
-                   ┌────────────▼────────────┐
-                   │  React Mini App (dist)  │
-                   │  pulse-app/             │
-                   └─────────────────────────┘
+```mermaid
+flowchart TD
+    TG["Telegram clients"]
+    BOT["Shell bot · python-telegram-bot (main.py)"]
+    APP["React Mini App (pulse-app/dist)"]
+
+    subgraph BACKEND["FastAPI backend (backend/)"]
+        direction TB
+        AUTH["initData HMAC validation + session/OTT auth"]
+        ROUTES["/api/services · /api/bookings · /api/waitlist · /api/assistant<br>/api/admin/* (require_admin) · /api/internal/* (shared secret)"]
+        DB[("SQLAlchemy + SQLite")]
+        SCHED["APScheduler: reminders + slot grid"]
+        NOTIFY["Telegram Bot API notifications"]
+    end
+
+    TG -- "/start · OTT links · reminder callbacks" --> BOT
+    TG -- "open Mini App (initData / ?ott=…)" --> APP
+    APP -- "/api (same origin)" --> BACKEND
+    BOT -- "X-Internal-Token" --> BACKEND
+    BACKEND -- "serves the built Mini App" --> APP
+    SCHED --> DB
+    AUTH --> DB
 ```
 
 ## Quickstart
