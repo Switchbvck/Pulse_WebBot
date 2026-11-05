@@ -18,6 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 os.environ["PULSE_DB_URL"] = "sqlite:///:memory:"
 os.environ["PULSE_BOT_TOKEN"] = "12345:test-token"
 os.environ["PULSE_ADMIN_IDS"] = "771234567,738376346"
+os.environ["PULSE_INTERNAL_TOKEN"] = "test-internal-token"
 # Anonymous = ordinary user; admin calls sign as DEMO_USER. No demo seed data.
 os.environ["PULSE_ALLOW_ANONYMOUS"] = "true"
 os.environ["PULSE_SEED_DEMO_DATA"] = "false"

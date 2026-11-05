@@ -30,7 +30,7 @@ test('booking wizard completes a full flow on demo data', async ({ page }) => {
 })
 
 test('wizard validation: Continue stays disabled without a slot', async ({ page }) => {
-  await page.goto('/?service=1')
+  await page.goto('/?service=svc-checkup')
   await expect(page.getByText('Step 2 of 3')).toBeVisible({ timeout: 10_000 })
   await expect(page.getByRole('button', { name: /Continue/ })).toBeDisabled()
 })
