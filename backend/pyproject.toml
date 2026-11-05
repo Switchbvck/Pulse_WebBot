@@ -1,0 +1,10 @@
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+extend-exclude = [".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+# E501: line length handled by the formatter; B008: `Depends(...)` in defaults
+# is the canonical FastAPI dependency-injection pattern.
+ignore = ["E501", "B008"]

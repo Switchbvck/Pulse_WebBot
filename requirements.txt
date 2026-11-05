@@ -1,0 +1,5 @@
+# Pulse Telegram shell bot (root main.py).
+# The API backend lives in backend/requirements.txt.
+python-telegram-bot==20.7
+python-dotenv==1.0.0
+httpx==0.27.2
