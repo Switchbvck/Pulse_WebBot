@@ -16,8 +16,16 @@ watches revenue/analytics.
 | Backend | Python 3.12, FastAPI, SQLAlchemy 2, SQLite (swap via `PULSE_DB_URL`), APScheduler |
 | Frontend | React 18, Vite, Tailwind, TanStack Query, Telegram WebApp SDK |
 | Bot | python-telegram-bot (shell: launch button, login tokens, reminder callbacks) |
-| Tests | 44 backend (pytest, in-memory DB), frontend unit (Vitest) + E2E (Playwright) |
+| Tests | 51 backend (pytest, in-memory DB), frontend unit (Vitest) + E2E (Playwright) |
 | CI | GitHub Actions: ruff + pytest, eslint + vitest + build, Playwright E2E |
+
+## Demo
+
+Recorded live in Telegram via the shell bot [@pulseSwitchback_bot](https://t.me/pulseSwitchback_bot).
+
+| Booking flow (patient) | Admin panel (clinic) |
+|---|---|
+| ![Booking a session in the Pulse Mini App](docs/demo-booking.webp) | ![Managing hours and closed dates](docs/demo-admin.webp) |
 
 ---
 
