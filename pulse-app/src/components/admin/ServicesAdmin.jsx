@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { Pencil, QrCode, Plus, X } from 'lucide-react'
+import { Clock, DollarSign, Pencil, QrCode, Plus, X } from 'lucide-react'
 import {
   apiSource,
   createAdminService,
@@ -167,24 +167,30 @@ export default function ServicesAdmin() {
             className="glass-card bg-transparent px-4 py-2.5 text-sm text-mist outline-none placeholder:text-mist-faint"
           />
           <div className="grid grid-cols-2 gap-3">
-            <input
-              type="number"
-              min="0"
-              value={form.price}
-              onChange={(event) => setForm({ ...form, price: event.target.value })}
-              placeholder="Price $"
-              aria-label="Price"
-              className="glass-card h-11 bg-transparent px-4 text-sm text-mist outline-none placeholder:text-mist-faint"
-            />
-            <input
-              type="number"
-              min="5"
-              value={form.duration_min}
-              onChange={(event) => setForm({ ...form, duration_min: event.target.value })}
-              placeholder="Duration (min)"
-              aria-label="Duration in minutes"
-              className="glass-card h-11 bg-transparent px-4 text-sm text-mist outline-none placeholder:text-mist-faint"
-            />
+            <div className="relative">
+              <input
+                type="number"
+                min="0"
+                value={form.price}
+                onChange={(event) => setForm({ ...form, price: event.target.value })}
+                placeholder="Price"
+                aria-label="Price"
+                className="glass-card h-11 bg-transparent pl-4 pr-9 text-sm text-mist outline-none placeholder:text-mist-faint"
+              />
+              <DollarSign className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-mist-faint" />
+            </div>
+            <div className="relative">
+              <input
+                type="number"
+                min="5"
+                value={form.duration_min}
+                onChange={(event) => setForm({ ...form, duration_min: event.target.value })}
+                placeholder="Duration (min)"
+                aria-label="Duration in minutes"
+                className="glass-card h-11 bg-transparent pl-4 pr-9 text-sm text-mist outline-none placeholder:text-mist-faint"
+              />
+              <Clock className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-mist-faint" />
+            </div>
           </div>
           <div className="no-scrollbar flex gap-2 overflow-x-auto">
             {ICON_CHOICES.map(({ key, label }) => (
