@@ -166,28 +166,28 @@ export default function ServicesAdmin() {
             rows={2}
             className="glass-card bg-transparent px-4 py-2.5 text-sm text-mist outline-none placeholder:text-mist-faint"
           />
-          <div className="grid grid-cols-2 gap-3">
-            <div className="relative">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="relative min-w-0">
               <input
                 type="number"
                 min="0"
                 value={form.price}
                 onChange={(event) => setForm({ ...form, price: event.target.value })}
-                placeholder="Price"
+                placeholder="0"
                 aria-label="Price"
-                className="glass-card h-11 bg-transparent pl-4 pr-9 text-sm text-mist outline-none placeholder:text-mist-faint"
+                className="glass-card h-11 w-full bg-transparent pl-4 pr-9 text-sm text-mist outline-none placeholder:text-mist-faint"
               />
               <DollarSign className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-mist-faint" />
             </div>
-            <div className="relative">
+            <div className="relative min-w-0">
               <input
                 type="number"
                 min="5"
                 value={form.duration_min}
                 onChange={(event) => setForm({ ...form, duration_min: event.target.value })}
-                placeholder="Duration (min)"
+                placeholder="30"
                 aria-label="Duration in minutes"
-                className="glass-card h-11 bg-transparent pl-4 pr-9 text-sm text-mist outline-none placeholder:text-mist-faint"
+                className="glass-card h-11 w-full bg-transparent pl-4 pr-9 text-sm text-mist outline-none placeholder:text-mist-faint"
               />
               <Clock className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-mist-faint" />
             </div>
